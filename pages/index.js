@@ -5,8 +5,12 @@ import HydraCanvas from "../components/HydraCanvas";
 const Item = ({ gist, code }) => (
   <div>
     <HydraCanvas code={code} />
-    <span>{gist.description}</span>
-    <span>{gist.id}</span>
+    <p>{gist.description}</p>
+    <p>
+      <a href={gist.html_url} target="_blank">
+        {gist.id}
+      </a>
+    </p>
   </div>
 );
 
