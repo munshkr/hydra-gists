@@ -51,7 +51,7 @@ class HydraCanvas extends React.PureComponent {
   }
 
   render() {
-    return <canvas ref={e => (this.canvas = e)}></canvas>;
+    return <canvas ref={e => (this.canvas = e)} {...this.props}></canvas>;
   }
 }
 
