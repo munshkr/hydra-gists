@@ -1,0 +1,12 @@
+pages:
+  image: node:10
+  stage: deploy
+  script:
+  - npm install
+  - npm run export
+  - mv out/ public/
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
