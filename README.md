@@ -1,4 +1,4 @@
-# hydra-gist
+# hydra-gists
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 
@@ -24,7 +24,7 @@ Then go to http://localhost:3000/
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at the [issues
-page](https://github.com/munshkr/hydra-gist). This project is intended to be a
+page](https://github.com/munshkr/hydra-gists). This project is intended to be a
 safe, welcoming space for collaboration, and contributors are expected to
 adhere to the [Contributor Covenant](http://contributor-covenant.org) code of
 conduct.
