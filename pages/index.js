@@ -1,9 +1,18 @@
 import React from "react";
 import axios from "axios";
+import HydraCanvas from "../components/HydraCanvas";
 
 class Home extends React.Component {
   static async getInitialProps({ query }) {
     return { query };
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      gists: [],
+      code: {}
+    };
   }
 
   componentDidMount() {
@@ -15,19 +24,54 @@ class Home extends React.Component {
   async getGistsFrom(user) {
     console.log(`Fetch gists from ${user}`);
 
+    let data;
+
     try {
       const response = await axios.get(
         `https://api.github.com/users/${user}/gists`
       );
-      console.log(response);
+      data = response.data;
+      //console.log(data);
     } catch (error) {
       console.error("Failed to fetch gists. Github API down?");
       console.error(error);
+      return;
+    }
+
+    // Filter only #hydra gists
+    const hydraGists = data.filter(
+      gist => gist.description.indexOf("#hydra") >= 0
+    );
+
+    console.log(hydraGists);
+    this.setState({ gists: hydraGists });
+
+    // Fetch code from each gist
+    for (let i = 0; i < hydraGists.length; i++) {
+      const gist = hydraGists[i];
+      const jsFile = Object.values(gist.files).find(
+        file => file["language"] === "JavaScript"
+      );
+      const jsFileUrl = jsFile.raw_url;
+
+      axios.get(jsFileUrl).then(code => {
+        this.setState({ code: { [gist.id]: code.data } });
+      });
     }
   }
 
   render() {
-    return <div>Welcome to Next.js!</div>;
+    const { gists, code } = this.state;
+
+    return (
+      <div>
+        <ul>
+          {gists.map(gist => (
+            <HydraCanvas key={gist.id} code={code[gist.id]} />
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 
