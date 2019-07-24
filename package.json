@@ -1,11 +1,16 @@
 {
   "name": "hydra-gist",
   "version": "0.1.0",
-  "description": "Showcase of Hydra synths snippets",
+  "description": "Showcase of Hydra code snippets",
   "main": "index.js",
   "repository": "https://github.com/munshkr/hydra-gist",
   "author": "Damián Silvani <munshkr@gmail.com>",
   "license": "GPL-3.0+",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
     "next": "^9.0.2",
     "react": "^16.8.6",
