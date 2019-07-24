@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Layout from "../components/Layout";
 import HydraCanvas from "../components/HydraCanvas";
 
 const Item = ({ gist, code }) => (
@@ -76,15 +77,17 @@ class Home extends React.Component {
     const { gists, code } = this.state;
 
     return (
-      <div>
-        <ul>
-          {gists.map(gist => (
-            <li>
-              <Item key={gist.id} gist={gist} code={code[gist.id]} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Layout>
+        <section className="section">
+          <ul>
+            {gists.map(gist => (
+              <li key={gist.id}>
+                <Item gist={gist} code={code[gist.id]} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </Layout>
     );
   }
 }
