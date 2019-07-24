@@ -1,7 +1,7 @@
 {
   "name": "hydra-gists",
   "version": "0.1.0",
-  "description": "Showcase of Hydra code snippets",
+  "description": "Gallery of Hydra code snippets",
   "main": "index.js",
   "repository": "https://github.com/munshkr/hydra-gists",
   "author": "Damián Silvani <munshkr@gmail.com>",

@@ -2,8 +2,8 @@
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 
-> Showcase of [Hydra](https://github.com/ojack/hydra) snippets, based on
-> [GitHub Gist](https://gist.github.com/).
+> Gallery of [Hydra](https://github.com/ojack/hydra) snippets, based on [GitHub
+> Gist](https://gist.github.com/).
 
 ***Work in progress***
 
