@@ -2,6 +2,14 @@ import React from "react";
 import axios from "axios";
 import HydraCanvas from "../components/HydraCanvas";
 
+const Item = ({ gist, code }) => (
+  <div>
+    <HydraCanvas code={code} />
+    <span>{gist.description}</span>
+    <span>{gist.id}</span>
+  </div>
+);
+
 class Home extends React.Component {
   static async getInitialProps({ query }) {
     return { query };
@@ -67,7 +75,9 @@ class Home extends React.Component {
       <div>
         <ul>
           {gists.map(gist => (
-            <HydraCanvas key={gist.id} code={code[gist.id]} />
+            <li>
+              <Item key={gist.id} gist={gist} code={code[gist.id]} />
+            </li>
           ))}
         </ul>
       </div>
