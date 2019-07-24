@@ -16,12 +16,28 @@ class Item extends React.Component {
 
     return (
       <div>
-        <HydraCanvas code={code} onClick={this.handleClick} />
+        <HydraCanvas
+          code={code}
+          onClick={this.handleClick}
+          width={300}
+          height={200}
+        />
         <p>{gist.description}</p>
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-        <a href={gist.html_url} target="_blank">
-          {gist.id}
-        </a>
+        <p>
+          <time>{gist.updated_at}</time>
+        </p>
+        <p>
+          <a href={gist.html_url} target="_blank">
+            {gist.id}
+          </a>
+        </p>
+
+        <style jsx>
+          {`
+            input {
+            }
+          `}
+        </style>
       </div>
     );
   }
