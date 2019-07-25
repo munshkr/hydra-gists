@@ -7,13 +7,12 @@
   "author": "Damián Silvani <munshkr@gmail.com>",
   "license": "GPL-3.0+",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "express": "^4.17.1",
     "hydra-synth": "^1.0.25",
     "next": "^9.0.2",
     "react": "^16.8.6",

@@ -57,7 +57,7 @@ class HydraCanvas extends React.PureComponent {
   }
 
   render() {
-    const { fullscreen, _code, ...props } = this.props;
+    const { fullscreen, code, isLocal, ...props } = this.props;
     const className = fullscreen ? "fullscreen" : "";
 
     return (

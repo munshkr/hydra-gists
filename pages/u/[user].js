@@ -3,8 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Router from "next/router";
 import React from "react";
-import HydraCanvas from "../components/HydraCanvas";
-import Layout from "../components/Layout";
+import HydraCanvas from "../../components/HydraCanvas";
+import Layout from "../../components/Layout";
 
 class Item extends React.Component {
   handleClick = () => {
@@ -17,7 +17,7 @@ class Item extends React.Component {
 
     return (
       <div>
-        <Link href={`/view?id=${gist.id}`} as={`/${gist.id}`}>
+        <Link href={`/${gist.id}`}>
           <HydraCanvas
             isLocal
             code={code}
@@ -63,7 +63,7 @@ class User extends React.Component {
 
   componentDidMount() {
     const { query } = this.props;
-    const user = query.u;
+    const user = query.user;
     this.setState({ user });
     this.fetchGistsFrom(user);
   }
@@ -90,7 +90,7 @@ class User extends React.Component {
       gist => gist.description.indexOf("#hydra") >= 0
     );
 
-    console.log(hydraGists);
+    // console.log(hydraGists);
     this.setState({ gists: hydraGists });
 
     // Fetch code from each gist
