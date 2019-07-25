@@ -1,7 +1,7 @@
 import React from "react";
 
-const GLOBAL_VARS_RE = /(o0|o1|o2|o3|s0|s1|s2|s3|time|a)/g;
-const GLOBAL_FUNCS_RE = /(gradient|osc|shape|noise|solid|voronoi|src|render)\(/g;
+const GLOBAL_VARS_RE = /\b(o0|o1|o2|o3|s0|s1|s2|s3|time|a)\b/g;
+const GLOBAL_FUNCS_RE = /\b(gradient|osc|shape|noise|solid|voronoi|src|render)\b\(/g;
 
 class HydraCanvas extends React.PureComponent {
   componentDidMount() {
