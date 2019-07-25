@@ -34,7 +34,7 @@ class Home extends React.Component {
   };
 
   redirectToUser(user) {
-    Router.push(`/user?u=${user}`);
+    Router.push(`/u/${user}`);
   }
 
   render() {

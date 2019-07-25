@@ -15,8 +15,8 @@ export default ({ children }) => {
       <style jsx global>
         {`
           body {
-            background: #29272b;
-            color: #ffffff;
+            background: #111;
+            color: #fff;
             font-family: "Roboto", sans-serif;
           }
 

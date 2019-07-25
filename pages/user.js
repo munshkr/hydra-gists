@@ -1,5 +1,6 @@
 import axios from "axios";
 import Head from "next/head";
+import Link from "next/link";
 import Router from "next/router";
 import React from "react";
 import HydraCanvas from "../components/HydraCanvas";
@@ -16,12 +17,15 @@ class Item extends React.Component {
 
     return (
       <div>
-        <HydraCanvas
-          code={code}
-          onClick={this.handleClick}
-          width={300}
-          height={200}
-        />
+        <Link href={`/view?id=${gist.id}`} as={`/${gist.id}`}>
+          <HydraCanvas
+            isLocal
+            code={code}
+            width={300}
+            height={200}
+            style={{ cursor: "pointer" }}
+          />
+        </Link>
         <p>{gist.description}</p>
         <p>
           <time>{gist.updated_at}</time>
@@ -61,10 +65,10 @@ class User extends React.Component {
     const { query } = this.props;
     const user = query.u;
     this.setState({ user });
-    this.getGistsFrom(user);
+    this.fetchGistsFrom(user);
   }
 
-  async getGistsFrom(user) {
+  async fetchGistsFrom(user) {
     console.log(`Fetch gists from ${user}`);
 
     let data;

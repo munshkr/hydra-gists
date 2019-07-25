@@ -13,9 +13,9 @@ app.prepare().then(() => {
     return app.render(req, res, "/user", { u: req.params.user });
   });
 
-  //   server.get('/:id', (req, res) => {
-  //     return app.render(req, res, '/view', { id: req.params.id })
-  //   })
+  server.get("/:id", (req, res) => {
+    return app.render(req, res, "/view", { id: req.params.id });
+  });
 
   server.get("*", (req, res) => {
     return handle(req, res);
