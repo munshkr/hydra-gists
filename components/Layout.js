@@ -1,5 +1,8 @@
 import Head from "next/head";
 
+import "../node_modules/bulma/bulma.sass";
+import "../styles/styles.scss";
+
 export default ({ children }) => {
   return (
     <div>
@@ -12,19 +15,6 @@ export default ({ children }) => {
         />
       </Head>
       {children}
-      <style jsx global>
-        {`
-          body {
-            background: #111;
-            color: #fff;
-            font-family: "Roboto", sans-serif;
-          }
-
-          a {
-            color: #e47464;
-          }
-        `}
-      </style>
     </div>
   );
 };
