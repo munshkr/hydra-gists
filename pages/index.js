@@ -42,16 +42,23 @@ class Home extends React.Component {
 
     return (
       <Layout>
-        <section>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              name="user"
-              type="text"
-              placeholder="Enter your GitHub username"
-              value={user}
-              onChange={this.handleChange}
-            />
-          </form>
+        <section className="section">
+          <div className="container">
+            <form onSubmit={this.handleSubmit}>
+              <div className="field">
+                <div className="control">
+                  <input
+                    className="input is-large"
+                    name="user"
+                    type="text"
+                    placeholder="Enter your GitHub username"
+                    value={user}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
         </section>
       </Layout>
     );
