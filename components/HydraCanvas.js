@@ -36,21 +36,25 @@ class HydraCanvas extends React.PureComponent {
 
     if (code !== prevProps.code) {
       let evalCode = code;
-      if (isLocal) {
-        evalCode = this.localizeHydraCode(code);
-      }
-
-      console.log(evalCode);
-      try {
-        eval(evalCode);
-      } catch (err) {
-        console.error(`Failed to execute Hydra code: ${err}`);
-      }
+      if (isLocal) evalCode = this.localizeHydraCode(code);
+      this.tryEval(evalCode);
     }
   }
 
+  tryEval(code) {
+    console.log(code);
+    const oldHydra = window.H;
+    window.H = this.hydra;
+    try {
+      eval(code);
+    } catch (err) {
+      console.error(`Failed to execute Hydra code: ${err}`);
+    }
+    //window.H = oldHydra;
+  }
+
   localizeHydraCode(code) {
-    const replaceFunc = func => `this.hydra.${func}`;
+    const replaceFunc = func => `H.${func}`;
     return code
       .replace(GLOBAL_FUNCS_RE, replaceFunc)
       .replace(GLOBAL_VARS_RE, replaceFunc);
