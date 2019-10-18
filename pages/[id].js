@@ -1,7 +1,12 @@
 import axios from "axios";
 import React from "react";
+import dynamic from "next/dynamic";
 import HydraCanvas from "../components/HydraCanvas";
 import Layout from "../components/Layout";
+
+const HydraEditor = dynamic(() => import("../components/HydraEditor"), {
+  ssr: false
+});
 
 class View extends React.Component {
   static async getInitialProps({ query }) {
@@ -52,6 +57,7 @@ class View extends React.Component {
     return (
       <Layout>
         <section>
+          <HydraEditor code={code} />
           <HydraCanvas code={code} width={960} height={540} fullscreen />
         </section>
         <style jsx global>

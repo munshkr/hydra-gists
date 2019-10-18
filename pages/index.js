@@ -129,8 +129,8 @@ class Home extends React.Component {
             </div>
           </div>
         </section>
-        <footer class="footer">
-          <div class="content has-text-centered">
+        <footer className="footer">
+          <div className="content has-text-centered">
             <p>
               <strong>Hydra Gists</strong> by{" "}
               <a href="https://github.com/munshkr">munshkr</a>.<br />
