@@ -6,7 +6,7 @@ import "codemirror/theme/material.css";
 
 class HydraEditor extends React.Component {
   render() {
-    const { code, className } = this.props;
+    const { code, className, onChange } = this.props;
 
     return (
       <React.Fragment>
@@ -17,6 +17,7 @@ class HydraEditor extends React.Component {
             mode: "javascript",
             theme: "material"
           }}
+          onChange={onChange}
         />
         <style jsx global>
           {`

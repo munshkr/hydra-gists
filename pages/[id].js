@@ -15,9 +15,13 @@ class View extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
+      initialCode: "",
       code: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -39,25 +43,28 @@ class View extends React.Component {
       return;
     }
 
-    console.log(gist);
-
     const jsFile = Object.values(gist.files).find(
       file => file["language"] === "JavaScript"
     );
     const jsFileUrl = jsFile.raw_url;
 
     axios.get(jsFileUrl).then(code => {
-      this.setState({ code: code.data });
+      const { data } = code;
+      this.setState({ code: data, initialCode: data });
     });
   }
 
+  handleChange(_editor, _data, code) {
+    this.setState({ code });
+  }
+
   render() {
-    const { code } = this.state;
+    const { initialCode, code } = this.state;
 
     return (
       <Layout>
         <section>
-          <HydraEditor code={code} />
+          <HydraEditor code={initialCode} onChange={this.handleChange} />
           <HydraCanvas code={code} width={960} height={540} fullscreen />
         </section>
         <style jsx global>

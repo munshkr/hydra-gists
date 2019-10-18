@@ -3,7 +3,14 @@ import React from "react";
 const GLOBAL_VARS_RE = /\b(o0|o1|o2|o3|s0|s1|s2|s3|time|a)\b/g;
 const GLOBAL_FUNCS_RE = /\b(gradient|osc|shape|noise|solid|voronoi|src|render)\b\(/g;
 
-class HydraCanvas extends React.PureComponent {
+class HydraCanvas extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      error: null
+    };
+  }
   componentDidMount() {
     const { isLocal } = this.props;
     const makeGlobal = !isLocal;
@@ -47,8 +54,10 @@ class HydraCanvas extends React.PureComponent {
     window.H = this.hydra;
     try {
       eval(code);
-    } catch (err) {
-      console.error(`Failed to execute Hydra code: ${err}`);
+      this.setState({ error: null });
+    } catch (error) {
+      this.setState({ error: String(error) });
+      console.error(`Failed to execute Hydra code: ${error}`);
     }
     //window.H = oldHydra;
   }
@@ -62,21 +71,34 @@ class HydraCanvas extends React.PureComponent {
 
   render() {
     const { fullscreen, code, isLocal, ...props } = this.props;
+    const { error } = this.state;
+
     const className = fullscreen ? "fullscreen" : "";
 
     return (
-      <React.Fragment>
+      <div>
         <canvas ref={e => (this.canvas = e)} className={className} {...props} />
+        {error && <span className="error">{error}</span>}
         <style jsx>
           {`
             .fullscreen {
               height: 100vh;
               width: 100vw;
               display: block;
+              overflow: hidden;
+            }
+            .error {
+              font-family: monospace;
+              position: absolute;
+              bottom: 1em;
+              left: 1em;
+              background-color: #ff0000;
+              color: #ffffff;
+              padding: 2px 5px;
             }
           `}
         </style>
-      </React.Fragment>
+      </div>
     );
   }
 }
