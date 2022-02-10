@@ -19,7 +19,7 @@
     "codemirror": "^5.49.0",
     "hydra-synth": "^1.0.25",
     "next": "^9.0.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-codemirror2": "^6.0.0",
     "react-dom": "^16.8.6"
